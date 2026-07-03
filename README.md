@@ -1,24 +1,32 @@
 # Atlas Copco — Technical SEO Report (Streamlit)
 
-Branded three-tab dashboard built from the 2026-06-30 crawl audit of
-`www.atlascopco.com/en-us/compressors`.
+Branded four-tab dashboard built from the **complete** 2026-06-30 dataset:
+crawl audit + Core Web Vitals field data (2 segments) + Search Console coverage.
 
 ## Run locally
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
+    pip install -r requirements.txt
+    streamlit run app.py
 
 ## Deploy to Streamlit Community Cloud
-1. Push `app.py`, `requirements.txt`, and the `/data` folder to a public GitHub repo.
-2. Go to share.streamlit.io → New app → point it at `app.py`.
+Push app.py, requirements.txt, and the /data folder to a public GitHub repo,
+then point share.streamlit.io at app.py.
 
-## Structure
-- `app.py` — the report (Overview / Diagnostics / Action Plan tabs)
-- `data/` — cleaned CSVs exported from the source audit workbook
-- Brand palette follows the Atlas Copco Group 2023 visual identity (Teal #054E5A primary).
+## Tabs
+1. Overview — single score + grade, rationale, KPIs, score composition.
+2. Diagnostics — severity split + every affected URL (crawl audit).
+3. Performance & Coverage — 90-day Core Web Vitals trend and Search Console
+   indexed-vs-not-indexed + impressions.
+4. Action Plan — prioritised fixes + projected recovery.
 
-## Scoring
-Two scores are shown by design:
-- **Reported 63/100** — crawler output at face value (hard-capped at 65 by the >20% non-indexable rule).
-- **Adjusted 78/100** — re-scores crawlability & internal-linking on the finding that all 1,414 "4xx" errors and 26,860 "broken links" are HTTP 429 (rate-limit) artefacts, not genuine defects. Every real issue stays fully penalised.
+## Single score — how it was reached  (65 / 100, Grade C)
+- HTTP 429 responses (1,414 "4xx" + 26,860 "broken links") are treated as
+  crawler rate-limit artefacts and EXCLUDED from fault-scoring.
+- Performance is re-scored from the real Core Web Vitals field data
+  (0% of URLs "Good", 90.6% Poor desktop / 58.6% Poor mobile, worsening).
+- Indexability is a genuine, corroborated problem: crawl finds 75.7%
+  non-indexable and Search Console confirms only 7.1% of URLs indexed.
+- Because the corroborated non-indexable share exceeds 20%, the composite
+  (raw 69) is capped at 65.
+
+Brand palette follows the Atlas Copco Group 2023 visual identity
+(Teal #054E5A primary, beige #E1B77E, deep blue #123F6D accents).
