@@ -1,0 +1,14 @@
+Priority,Recommendation
+Critical,Resolve 1414 broken (4xx) URL(s).
+Critical,>20% of URLs are non-indexable -> capped at 65
+High,Review 1418 non-indexable URL(s) for unintended noindex/canonical.
+High,Add an H1 to 21 page(s).
+High,Fix canonical issues on 3 page(s).
+High,Repair broken internal links on 456 page(s).
+Medium,De-duplicate titles across 12 page(s).
+Medium,De-duplicate meta descriptions across 19 page(s).
+Medium,Write meta descriptions for 1 page(s).
+Medium,Reduce multiple H1 tags on 8 page(s).
+Medium,Expand thin content on 1 page(s) (<300 words).
+Low,Add alt text to images on 165 page(s).
+Low,Add structured data (schema) to 1415 page(s).
