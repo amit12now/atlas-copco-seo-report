@@ -1,7 +1,7 @@
 # Atlas Copco — Technical SEO Report (Streamlit)
 
-Branded four-tab dashboard built from the **complete** 2026-06-30 dataset:
-crawl audit + Core Web Vitals field data (2 segments) + Search Console coverage.
+Branded six-tab dashboard built from the clean 2026 re-crawl of
+www.atlascopco.com/en-us/compressors (1,700 URLs, no rate-limit artefacts).
 
 ## Run locally
     pip install -r requirements.txt
@@ -12,21 +12,18 @@ Push app.py, requirements.txt, and the /data folder to a public GitHub repo,
 then point share.streamlit.io at app.py.
 
 ## Tabs
-1. Overview — single score + grade, rationale, KPIs, score composition.
-2. Diagnostics — severity split + every affected URL (crawl audit).
-3. Performance & Coverage — 90-day Core Web Vitals trend and Search Console
-   indexed-vs-not-indexed + impressions.
-4. Action Plan — prioritised fixes + projected recovery.
+1. Overview — single score (95/100, Grade A), assessment, KPIs, composition.
+2. On-Page & Metadata — full per-URL metadata + all 24 crawl fields (1,700 URLs).
+3. Indexability — status/robots/canonical for every URL.
+4. Issues — every issue by severity (Critical/High/Medium/Low) + tool recommendations.
+5. Performance & Coverage — Core Web Vitals + Search Console context (property-wide, not scored).
+6. Action Plan — prioritised fixes, incl. Product/Organization schema guidance.
 
-## Single score — how it was reached  (65 / 100, Grade C)
-- HTTP 429 responses (1,414 "4xx" + 26,860 "broken links") are treated as
-  crawler rate-limit artefacts and EXCLUDED from fault-scoring.
-- Performance is re-scored from the real Core Web Vitals field data
-  (0% of URLs "Good", 90.6% Poor desktop / 58.6% Poor mobile, worsening).
-- Indexability is a genuine, corroborated problem: crawl finds 75.7%
-  non-indexable and Search Console confirms only 7.1% of URLs indexed.
-- Because the corroborated non-indexable share exceeds 20%, the composite
-  (raw 69) is capped at 65.
+## Single score — 95 / 100 (Grade A)
+Excellent site: 1,691/1,700 indexable (99.5%), schema on 99.8% of pages, HTTPS
+clean, 0 server errors, 0 broken internal links. Held back by 3 live 404 product
+pages, a duplicate-metadata backlog (107 titles / 117 metas), 32 missing H1s, and
+thin structured-data type-depth (no Product schema on product pages).
 
 Brand palette follows the Atlas Copco Group 2023 visual identity
-(Teal #054E5A primary, beige #E1B77E, deep blue #123F6D accents).
+(Teal #054E5A primary, beige #E1B77E, deep blue #123F6D accents). No off-brand colors.
